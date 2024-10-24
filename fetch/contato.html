@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato Responsivo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-white shadow-md">
+        <div class="container mx-auto px-4">
+          <ul class="flex justify-center space-x-10 py-4">
+            <li><a href="#" class="text-lg font-bold text-gray-700 hover:text-black">Home</a></li>
+            <li><a href="#" class="text-lg font-bold text-gray-700 hover:text-black">Calcular Frete</a></li>
+            <li><a href="#" class="text-lg font-bold text-gray-700 hover:text-black">Contato</a></li>
+          </ul>
+        </div>
+      </nav>
+
+    <!-- Container do Formulário -->
+    <div class="flex justify-center items-center mt-10">
+        <form id="form-contato" class="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full" action="https://webhook.site/9edb03be-7b3b-4c3e-a6ca-91671155ba4c" method="POST">
+            
+            <div class="mb-4">
+                <label for="name" class="block text-gray-700 font-bold">Nome *</label>
+                <input type="text" id="name" name="name" class="w-full border border-gray-300 p-2 rounded mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+            </div>
+            
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700 font-bold">Email *</label>
+                <input type="email" id="email" name="email" class="w-full border border-gray-300 p-2 rounded mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+            </div>
+            
+            <div class="mb-4">
+                <label for="message" class="block text-gray-700 font-bold">Mensagem *</label>
+                <textarea id="message" name="message" class="w-full border border-gray-300 p-2 rounded mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" rows="4" required></textarea>
+            </div>
+            
+            <div class="flex justify-end">
+                <button type="submit" class="bg-gray-800 text-white font-bold py-1 px-28 rounded-sm hover:bg-gray-900">Enviar</button>
+              </div>
+        </form>
+    </div>
+    <footer class="bg-black text-white py-5 text-center mt-40">
+        <p>© DummyExpress</p>
+      </footer>
+
+      <script src="js/contato.js" type="module"></script>
+</body>
+</html>

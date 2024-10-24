@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcular frete</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li class="menu-item"><a class="item-link" href="index.html">Home</a></li>
+                <li class="menu-item"><a class="item-link" href="calcular-frete.html">Calcular Frete</a></li>
+                <li class="menu-item"><a class="item-link" href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="frete-container">
+        
+        <form class="box" id="calcular-frete">
+            <div class="input-form">
+                <label class="etiqueta"> CEP de origem*</label>
+                <input type="text" placeholder="00.000-000" class="forma" id="cep-origem">
+            </div>
+
+            <div class="input-form">
+                <label class="etiqueta"> CEP de destino*</label>
+                <input type="text" placeholder="00.000-000" class="forma" id="cep-destino">
+            </div>
+            <div class="separador">
+                <div class="input-form">
+                    <label class="etiqueta">Peso*</label>
+                    <input type="text" placeholder="1.5" class="forma inputmenor" id="peso">
+                </div>
+
+                <div class="input-form">
+                    <label class="etiqueta"> Quantidade*</label>
+                    <input type="text" placeholder="2" class="forma inputmenor" id="quantidade">
+                </div>
+            </div>
+            <button class="button">Calcular frete</button>
+        </form>
+
+        <div class="services-wrapper">
+            <div class="address-container">
+                <div class="address-box">
+                    <h3>Origem</h3>
+                    <span id="endereco-origem"></span>
+                </div>
+                <div class="address-box">
+                    <h3>Destino</h3>
+                    <span id="endereco-destino"></span>
+                </div>
+            </div>
+            <div class="service-container">
+                Preencha os ceps para ver as opções de frete
+            </div>
+        </div>
+
+
+    </div>
+
+    <footer class="footer-freight">
+        © DummyExpress
+    </footer>
+
+    <script src="js/main.js" type="module"></script>
+</body>
+
+</html>

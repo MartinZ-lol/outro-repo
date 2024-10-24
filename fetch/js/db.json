@@ -1,0 +1,20 @@
+[
+    {
+        "postCodeStart": "60000000",
+        "postCodeEnd": "63999999",
+        "services": [
+            {
+                "name": "Basic",
+                "price": 10.5,
+                "priceWithDiscount": 0,
+                "days": 10
+            },
+            {
+                "name": "Premium",
+                "price": 50.75,
+                "priceWithDiscount": 0,
+                "days": 2
+            }
+        ]
+    }
+]
