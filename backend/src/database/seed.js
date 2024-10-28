@@ -97,17 +97,61 @@ const productImages = [
         path: '/imagens/produto-c-imagem1.jpg'
     }
 ];
+const productOptions = [
+    {
+        product_id: 1,
+        title: 'Opção A1',
+        shape: 'circle',
+        radius: 5,
+        type: 'text',
+        values: 'Valor A1'
+    },
+    {
+        product_id: 1,
+        title: 'Opção A2',
+        shape: 'square',
+        radius: 0,
+        type: 'color',
+        values: 'Vermelho'
+    },
+    {
+        product_id: 2,
+        title: 'Opção B1',
+        shape: 'circle',
+        radius: 10,
+        type: 'text',
+        values: 'Valor B1'
+    },
+    {
+        product_id: 3,
+        title: 'Opção C1',
+        shape: 'square',
+        radius: 0,
+        type: 'color',
+        values: 'Azul'
+    },
+    {
+        product_id: 4,
+        title: 'Opção D1',
+        shape: 'circle',
+        radius: 0,
+        type: 'color',
+        values: 'Roxo'
+    }
+];
 
 const ProductModel = require('../models/ProductModel');
 const CategoryModel = require('../models/CategoryModel');
 const ProductCategoryModel = require('../models/ProductCategoryModel');
 const ProductImageModel = require('../models/ProductImageModel');
+const ProductOptionsModel = require('../models/ProductOptionsModel');
 
 async function execute() {
     //await ProductModel.bulkCreate(products);
-    await ProductImageModel.bulkCreate(productImages);
+    //await ProductImageModel.bulkCreate(productImages);
     //await CategoryModel.bulkCreate(categories);
     //await ProductCategoryModel.bulkCreate(productCategories);
+    await ProductOptionsModel.bulkCreate(productOptions);
 }
 
 execute();

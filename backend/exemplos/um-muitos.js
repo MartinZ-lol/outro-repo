@@ -1,16 +1,17 @@
-const ProductImageModel = require('../src/models/ProductImageModel');
 const ProductModel = require('../src/models/ProductModel');
+const ProductOptionsModel = require('../src/models/ProductOptionsModel');
 
-ProductModel.hasMany(ProductImageModel, {foreignKey: "product_id", as: 'images'});
+ProductModel.hasMany(ProductOptionsModel, {foreignKey: "product_id", as: 'options'});
 
 async function execute() {
-    let product = await ProductModel.findOne({
+    let product = await ProductModel.findAll({
         include: {
-            model: ProductImageModel,
-            as: "images"
+            model: ProductOptionsModel,
+            as: "options"
         }
     });
-    console.log(product.images[1].path);
+
+    console.log(product[2].options[0]);
 }
 
 execute();
