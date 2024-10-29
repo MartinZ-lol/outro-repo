@@ -147,10 +147,10 @@ const ProductImageModel = require('../models/ProductImageModel');
 const ProductOptionsModel = require('../models/ProductOptionsModel');
 
 async function execute() {
-    //await ProductModel.bulkCreate(products);
-    //await ProductImageModel.bulkCreate(productImages);
-    //await CategoryModel.bulkCreate(categories);
-    //await ProductCategoryModel.bulkCreate(productCategories);
+    await ProductModel.bulkCreate(products);
+    await ProductImageModel.bulkCreate(productImages);
+    await CategoryModel.bulkCreate(categories);
+    await ProductCategoryModel.bulkCreate(productCategories);
     await ProductOptionsModel.bulkCreate(productOptions);
 }
 

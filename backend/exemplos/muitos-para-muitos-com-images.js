@@ -25,7 +25,7 @@ async function execute() {
         },
         {
             model: ProductImageModel,
-            as: images
+            as: 'images'
         }
     ]
     });
