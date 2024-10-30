@@ -1,10 +1,6 @@
-module.exports = (request, response) => {
-    response.json([
-        {
-            product: 10
-        },
-        {
-            users: 5
-        }
-    ]);
+const ProductModel = require('../../models/ProductModel');
+
+module.exports = async(request, response) => {
+    let products = await ProductModel.findAll();
+    return response.json(products);
 }

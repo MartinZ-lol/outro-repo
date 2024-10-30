@@ -139,19 +139,41 @@ const productOptions = [
         values: 'Roxo'
     }
 ];
+const user = [
+    {
+        firstname: 'João',
+        surname: 'Silva',
+        email: 'joao.silva@example.com',
+        password: 'senha123'
+    },
+    {
+        firstname: 'Maria',
+        surname: 'Oliveira',
+        email: 'maria.oliveira@example.com',
+        password: 'senha456'
+    },
+    {
+        firstname: 'Carlos',
+        surname: 'Santos',
+        email: 'carlos.santos@example.com',
+        password: 'senha789'
+    },
+];
 
 const ProductModel = require('../models/ProductModel');
 const CategoryModel = require('../models/CategoryModel');
 const ProductCategoryModel = require('../models/ProductCategoryModel');
 const ProductImageModel = require('../models/ProductImageModel');
 const ProductOptionsModel = require('../models/ProductOptionsModel');
+const UserModel = require('../models/UserModel');
 
 async function execute() {
     //await ProductModel.bulkCreate(products);
     //await ProductImageModel.bulkCreate(productImages);
     //await CategoryModel.bulkCreate(categories);
     //await ProductCategoryModel.bulkCreate(productCategories);
-    await ProductOptionsModel.bulkCreate(productOptions);
+    //await ProductOptionsModel.bulkCreate(productOptions);
+    await UserModel.bulkCreate(user)
 }
 
 execute();
