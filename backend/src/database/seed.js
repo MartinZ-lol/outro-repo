@@ -168,12 +168,20 @@ const ProductOptionsModel = require('../models/ProductOptionsModel');
 const UserModel = require('../models/UserModel');
 
 async function execute() {
+<<<<<<< HEAD
     //await ProductModel.bulkCreate(products);
     //await ProductImageModel.bulkCreate(productImages);
     //await CategoryModel.bulkCreate(categories);
     //await ProductCategoryModel.bulkCreate(productCategories);
     //await ProductOptionsModel.bulkCreate(productOptions);
     await UserModel.bulkCreate(user)
+=======
+    await ProductModel.bulkCreate(products);
+    await ProductImageModel.bulkCreate(productImages);
+    await CategoryModel.bulkCreate(categories);
+    await ProductCategoryModel.bulkCreate(productCategories);
+    await ProductOptionsModel.bulkCreate(productOptions);
+>>>>>>> d5c858d96479107f0f6385fd81ac1d83e917b128
 }
 
 execute();
