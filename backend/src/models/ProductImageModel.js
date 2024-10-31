@@ -16,6 +16,12 @@ const ProductImageModel = connection.define("ProductImageModel", {
     path: {
         type: DataTypes.STRING(255),
         allowNull: false
+    },
+    url:{
+        type: DataTypes.VIRTUAL,
+        get() {
+            return `http://localhost:3000/public/${this.path}`
+        }
     }
 }, {
     tableName: 'product_image'

@@ -1,6 +1,6 @@
-const ProductModel = require('../../models/ProductModel')
-const fs = require('fs');
-const path = require("path");
+const ProductModel = require('../../models/ProductModel');
+const ProductImageModel = require('../../models/ProductImageModel');
+const {saveByUrl} = require('../../services/product-images');
 
 module.exports = async (request, response) => {
     let {
@@ -11,26 +11,39 @@ module.exports = async (request, response) => {
         stock
     } = request.body;
 
-    let product = await ProductModel.create({
-        name, slug, price, description, stock
-    });
+    let product;
 
-    let {images} = request.body;
-
-    let res = await fetch(images);
-    let type = res.headers.get('content-type');
-    let extension = type.split('/').pop();
-    let buffer = Buffer.from(await res.arrayBuffer());
-    let filename = Math.random().toString(16).slice(2);
-    let directory = path.resolve(`public/${slug}`);
-
-    if(!fs.existsSync(directory)) {
-        fs.mkdirSync(directory, {recursive: true});
+    try {
+        product = await ProductModel.create({
+            name, slug, price, description, stock
+        });    
+    } catch(error) {
+        response.status(400);
+        return response.json({
+            message: "Erro ao criar o produto"
+        })
     }
-    let file = `${directory}/${filename}.${extension}`;
-    console.log(file)
-    fs.writeFileSync(file, buffer);
 
-    response.status(201);
-    return response.json(product);
+    
+    try {
+        let images = [];
+        for (let url of request.body.images) {
+            let {relativePath} = await saveByUrl({url, slug});
+            images.push({
+                product_id: product.id,
+                path: relativePath
+            });
+        }
+        await ProductImageModel.bulkCreate(images);
+        response.status(201);
+        return response.json(product);
+    } catch (error) {
+        console.log(error.message);
+        response.status(400);
+        return response.json({
+            message: "Erro ao salvar imagens no produto" + product.id
+        })
+    }
+
+
 }
