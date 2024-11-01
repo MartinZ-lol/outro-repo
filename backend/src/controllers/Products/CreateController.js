@@ -7,6 +7,8 @@ module.exports = async (request, response) => {
         name,
         slug,
         price,
+        enabled,
+        price_with_discount,
         description,
         stock
     } = request.body;
@@ -15,7 +17,7 @@ module.exports = async (request, response) => {
 
     try {
         product = await ProductModel.create({
-            name, slug, price, description, stock
+            name, slug, price, description, stock,enabled,price_with_discount
         });    
     } catch(error) {
         response.status(400);
