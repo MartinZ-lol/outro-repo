@@ -30,4 +30,5 @@ const ProductModel = connection.define("ProductModel", {
     tableName: "product"
 });
 
+
 module.exports = ProductModel;
