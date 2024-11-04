@@ -9,7 +9,7 @@ const CategoryModel = connection.define("CategoryModel", {
     slug: {
         type: DataTypes.STRING(255),
         allowNull: false
-    }
+    },
 }, {
     tableName: 'category'
 });
