@@ -7,12 +7,12 @@ const UpdateProductController = require('../controllers/Products/UpdateProductCo
 const DeleteProductController = require('../controllers/Products/DeleteProductController');
 //const GetBySlug = require('../controllers/Products/GetBySlug');
 
-const beforeListAll = (request, response, next) => {
+/*const beforeListAll = (request, response, next) => {
     console.log('Middleware');
     next();
 }
 
-router.use(beforeListAll);
+router.use(beforeListAll);*/
 
 router.get('/products', AllProductsController);
 //router.get('/products/:slug', GetBySlug);
