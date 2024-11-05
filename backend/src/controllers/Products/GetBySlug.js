@@ -3,7 +3,7 @@ const ProductImageModel = require('../../models/ProductImageModel');
 
 ProductModel.hasMany(ProductImageModel, {
     foreignKey: 'product_id',
-    as: 'images'
+    as: 'images2'
 })
 
 module.exports = async (request, response) => {
@@ -14,7 +14,7 @@ module.exports = async (request, response) => {
         include: {
             attributes: ['id', 'url', 'path'],
             model: ProductImageModel,
-            as: 'images'
+            as: 'images2'
         }
     });
     return response.json(products);

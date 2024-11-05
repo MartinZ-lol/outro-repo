@@ -1,11 +1,15 @@
-const express = require('express');
+const privateRoutes = require('./private-routes');
+const publicRoutes = require('./public-routes');
+
 const AllUserController = require('../controllers/User/AllUserController');
 const CreateUserController = require('../controllers/User/CreateUserController');
 const userEncrypt = require('../middleware/user-encrypt');
-let router = express.Router();
-
-router.get('/users', AllUserController);
-router.post('/users', userEncrypt, CreateUserController);
+const CreateTokenController = require('../controllers/User/CreateTokenController');
 
 
-module.exports = router;
+publicRoutes.get('/users', AllUserController);
+privateRoutes.post('/users', userEncrypt, CreateUserController);
+publicRoutes.post('/users/token', userEncrypt, CreateTokenController);
+
+
+module.exports = [publicRoutes, privateRoutes];
