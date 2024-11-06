@@ -11,7 +11,7 @@ async function execute() {
     await CategoryModel.sync();
     await ProductCategoryModel.sync(); 
     await ProductOptionsModel.sync();
-    await UserModel.sync();  
+    await UserModel.sync({alter: true});  
 }
 
 execute();

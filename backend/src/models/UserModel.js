@@ -16,7 +16,7 @@ const UserModel = connection.define("UserModel", {
         unique: true
     },
     password: {
-        type: DataTypes.STRING(255),
+        type: DataTypes.TEXT,
         allowNull: false
     }
 }, {
