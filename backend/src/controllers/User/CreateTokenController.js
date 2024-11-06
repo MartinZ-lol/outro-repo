@@ -1,4 +1,6 @@
 const UserModel = require("../../models/UserModel");
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
 module.exports = async (request, response) => {
     let {email, password} = request.body;
@@ -6,13 +8,22 @@ module.exports = async (request, response) => {
     if(!email || !password) {
         response.status(400)
         return response.json({
-            message: "Email ou senha ncorreto"
+            message: "Email ou senha incorreto"
         })
     }
 
     let user = await UserModel.findOne({
-        where: {email, password}
+        where: {email}
     });
+
+    let isValidUser = bcrypt.compareSync(password.toString(), user.password);
+
+    if(!isValidUser) {
+        response.status(400);
+        return response.json({
+            message: "Usuario não autorizado"
+        })
+    }
 
     if(!user?.id) {
         response.status(401)
@@ -21,12 +32,8 @@ module.exports = async (request, response) => {
         });
     }
 
-    email = btoa(user.email);
-    password = btoa(user.password);
-    let secret = btoa(process.env.SECRET);
+    let token = jwt.sign({id: user.id}, process.env.SECRET, {expiresIn: '24h'});
 
-    return response.json({
-        token: btoa(`${email}:${user.password}:${secret}`)
-    });
+    return response.json({token});
 
 }
