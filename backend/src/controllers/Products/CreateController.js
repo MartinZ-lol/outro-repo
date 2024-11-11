@@ -14,11 +14,11 @@ module.exports = async (request, response) => {
     } = request.body;
 
     let product;
-
+    
     try {
         product = await ProductModel.create({
             name, slug, price, description, stock,enabled,price_with_discount
-        });    
+        });   
     } catch(error) {
         response.status(400);
         return response.json({

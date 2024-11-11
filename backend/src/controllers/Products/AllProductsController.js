@@ -1,5 +1,6 @@
 const ProductModel = require('../../models/ProductModel');
 const ProductImageModel = require('../../models/ProductImageModel');
+const ProductOptionsModel = require('../../models/ProductOptionsModel');
 
 
 module.exports = async (request, response) => {
@@ -7,11 +8,16 @@ module.exports = async (request, response) => {
         where:{
             enabled: true
         },
-        include: {
+        include: [{
             attributes: ['id', 'url', 'path'],
-            model: ProductImageModel,
-            as: 'images'
-        }
+            model: ProductImageModel, 
+            as: 'images',
+        },
+        {
+            attributes: ['id', 'title', 'values'],
+            model: ProductOptionsModel,
+            as: 'options'
+        }]
     });
     return response.json(products);
 }
