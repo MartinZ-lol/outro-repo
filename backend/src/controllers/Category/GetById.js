@@ -3,9 +3,9 @@ const ProductModel = require('../../models/ProductModel');
 
 
 module.exports = async (request, response) => {
-    let category = await CategoryModel.findAll({
+    let category = await CategoryModel.findOne({
         where: {
-            slug: request.params.slug
+            id: request.params.id
         }
         
     });

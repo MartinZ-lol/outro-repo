@@ -11,9 +11,6 @@ module.exports = async (request, response) => {
             where: { id }
         });
 
-        /*if (!product) {
-            return response.status(404).json({ message: 'Produto não encontrado' });
-        }*/
 
 
         const updatedOption = await ProductOptionsModel.update(
@@ -22,7 +19,7 @@ module.exports = async (request, response) => {
                 shape,
                 radius,
                 type,
-                values
+                values: values.join()
             },
             {
                 where: {
@@ -32,9 +29,7 @@ module.exports = async (request, response) => {
             }
         );
 
-        /*if (updatedOption[0] === 0) {
-            return response.status(404).json({ message: 'Opção não encontrada' });
-        }*/
+
 
         return response.status(204).end();
     } catch (error) {
