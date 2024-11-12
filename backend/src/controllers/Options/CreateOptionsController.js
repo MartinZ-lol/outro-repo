@@ -1,51 +1,26 @@
-const ProductModel = require('../../models/ProductModel');
 const ProductOptionsModel = require('../../models/ProductOptionsModel');
-
+const ProductModel = require('../../models/ProductModel');
 
 module.exports = async (request, response) => {
-    let product = await ProductModel.findOne({
-        where: {
-            id: request.params.id
-        }
-    });
+    let { title, shape, radius, type, values } = request.body;
+    let product_id = request.params.id;
 
-    let options = []
     try {
-        
-        
-        for(let product of request.body) {
-            options.push({
-                product_id: request.params.id,
-            });
+
+        const product = await ProductModel.findByPk(product_id);
+        if (!product) {
+            return response.status(404).json({ message: 'Produto não encontrado' });
         }
-    } catch(error) {
-        response.status(400);
-        return response.json({
-            message: "Errado no options"
+
+
+        const option = await ProductOptionsModel.create({
+            product_id, title, shape, radius, type, values
         });
+
+
+        return response.status(201).json(option);
+    } catch (error) {
+        console.error(error);
+        return response.status(500).json({ message: 'Erro ao criar opção de produto' });
     }
-
-    options = await ProductOptionsModel.bulkCreate(options);
-    response.status(201);
-    return response.json(options)
-
-
-    // let {
-    //     title,
-    //     shape,
-    //     radius,
-    //     type,
-    //     values
-    // } = request.body;
-   
-    // let product_id = request.params.id
-   
-    // let option;
-  
-    //     option = await ProductOptionsModel.create({
-    //        product_id, title, shape, radius, type, values
-    //     });
-        
-    // response.status(201);
-    // return response.json(option)
 }

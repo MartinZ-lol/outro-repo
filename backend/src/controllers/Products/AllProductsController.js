@@ -14,7 +14,7 @@ module.exports = async (request, response) => {
             as: 'images',
         },
         {
-            attributes: ['id', 'title', 'values'],
+            attributes: ['id', 'title', 'shape', 'radius', 'type', 'values'],
             model: ProductOptionsModel,
             as: 'options'
         }]
