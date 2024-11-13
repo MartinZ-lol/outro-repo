@@ -1,7 +1,10 @@
 const ProductModel = require('../../models/ProductModel');
 const ProductImageModel = require('../../models/ProductImageModel');
 const ProductOptionsModel = require('../../models/ProductOptionsModel');
+const CategoryModel = require('../../models/CategoryModel');
+const ProductCategoryModel = require('../../models/ProductCategoryModel');
 const {saveByUrl} = require('../../services/product-images');
+
 
 module.exports = async (request, response) => {
     let {
@@ -14,6 +17,7 @@ module.exports = async (request, response) => {
         stock
     } = request.body;
 
+    
     let product;
     
     try {
@@ -25,6 +29,32 @@ module.exports = async (request, response) => {
         return response.json({
             message: "Erro ao criar o produto"
         })
+    }
+    console.log(request.body);
+    console.log(request.body.category_ids);
+    
+    
+    try {
+
+        let category_ids = [];  
+        for(let category of request.body.category_ids) {
+            console.log(request.body);         
+            category_ids.push({
+                product_id: product.id,
+                category_id: category
+            }); 
+        }
+        category_ids = await ProductCategoryModel.bulkCreate(category_ids)
+        product.setDataValue('category_ids', category_ids)
+        response.status(201);
+        
+    } catch (error) {
+        console.log(error.message);
+        
+        response.status(400);
+        return response.json({
+            message: "Erro em criar Categoria"
+        });
     }
 
     
