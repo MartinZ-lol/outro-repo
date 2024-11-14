@@ -2,6 +2,7 @@ const ProductModel = require('../models/ProductModel');
 const ProductImageModel = require('../models/ProductImageModel');
 const ProductOptionsModel = require('../models/ProductOptionsModel');
 const CategoryModel = require('../models/CategoryModel');
+const ProductCategoryModel = require('../models/ProductCategoryModel');
 
 ProductModel.hasMany(ProductImageModel, {
     foreignKey: 'product_id',
@@ -20,4 +21,16 @@ ProductModel.belongsToMany(CategoryModel, {
     through: 'product_category',
     as: 'categories',
     timestamps: false
+});
+
+ProductModel.hasMany(ProductCategoryModel, {
+    foreignKey: 'product_id',
+    as: 'category'
+
+});
+
+CategoryModel.hasMany(ProductCategoryModel, {
+    foreignKey: 'category_id',
+    as: 'category_ids'
+
 });

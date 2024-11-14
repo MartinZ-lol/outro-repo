@@ -1,6 +1,8 @@
 const ProductModel = require('../../models/ProductModel');
 const ProductImageModel = require('../../models/ProductImageModel');
 const ProductOptionsModel = require('../../models/ProductOptionsModel');
+const CategoryModel = require('../../models/CategoryModel');
+const ProductCategoryModel = require('../../models/ProductCategoryModel');
 
 
 module.exports = async (request, response) => {
@@ -9,6 +11,11 @@ module.exports = async (request, response) => {
             enabled: true
         },
         include: [{
+            attributes: ['category_id'],
+            model: ProductCategoryModel,
+            as: 'category'
+        },
+        {
             attributes: ['id', 'url', 'path'],
             model: ProductImageModel, 
             as: 'images',
