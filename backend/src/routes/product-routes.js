@@ -21,7 +21,7 @@ privateRoutes.delete('/products/:id', DeleteProductController);
 publicRoutes.get('/products/:id/images', ListImagesController);
 privateRoutes.post('/products/:id/images', CreateImagesController);
 privateRoutes.put('/products/:id/images/:imageId', UpdateImagesController);
-privateRoutes.delete('/images/:id', DeleteImagesController);
+privateRoutes.delete('/products/:id/images/:imageId', DeleteImagesController);
 
 
 module.exports = [publicRoutes, privateRoutes];
