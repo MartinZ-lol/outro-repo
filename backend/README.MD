@@ -21,11 +21,11 @@ $ npm run server
 No arquivo .env configure de acordo com banco de dados, como:
 
 ```
-$DB_HOST=localhost
-$DB_PORT=3306
-$DB_USERNAME=root
-$DB_PASSWORD=1234
-$DB_NAME=store
+DB_HOST=localhost
+DB_PORT=3306
+DB_USERNAME=root
+DB_PASSWORD=1234
+DB_NAME=store
 ```
 ## Estrutura do Projeto
 
