@@ -30,14 +30,14 @@ $DB_NAME=store
 ## Estrutura do Projeto
 
 ```
-$├── src
-$│   ├── controllers    # Controladores para gerenciar a lógica das $rotas
-$│   ├── models         # Modelos do Sequelize
-$│   ├── routes         # Definições de rotas
-$│   ├── config         # Configurações (ex.: banco de dados)
-$│   └── middleware     # Middlewares personalizados
-$├── .env               # Arquivo de variáveis de ambiente
-$├── .env.example       # Exemplo de arquivo .env
-$├── package.json       # Dependências e scripts do projeto
-$└── README.md          # Documentação do projeto
+├── src
+│   ├── controllers    # Controladores para gerenciar a lógica das $rotas
+│   ├── models         # Modelos do Sequelize
+│   ├── routes         # Definições de rotas
+│   ├── config         # Configurações (ex.: banco de dados)
+│   └── middleware     # Middlewares personalizados
+├── .env               # Arquivo de variáveis de ambiente
+├── .env.example       # Exemplo de arquivo .env
+├── package.json       # Dependências e scripts do projeto
+└── README.md          # Documentação do projeto
 ```
